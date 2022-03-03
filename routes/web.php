@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\Test;
 use Illuminate\Support\Facades\Route;
 use App\PaymentFacade as payment;
@@ -21,11 +22,9 @@ Route::get('/', function () {
 });
 Route::get('test', [Test::class, 'index']);
 
-/*Route::namespace('Web')->group(function(){
+Route::namespace('App\Http\Controllers\Web')->group(function(){
    Route::resource('teams', 'TeamController');
 });
-*/
 
-Route::group(['namespace' => 'Web', 'prefix' => 'teams'], function () {
-    Route::resource('teams', 'TeamsController');
-});
+Route::get('posts', [PostController::class, 'index']);
+
